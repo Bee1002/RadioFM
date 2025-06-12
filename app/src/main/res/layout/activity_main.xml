@@ -1,47 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp">
+    android:background="@color/background">
 
-    <ImageView
-        android:id="@+id/radioLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/ic_logo"
-        android:contentDescription="Radio Logo"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/radioName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Radio Ejemplo"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Radio FM"
+            app:menu="@menu/top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
-    <TextView
-        android:id="@+id/radioDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="La mejor música en vivo"
-        android:layout_marginTop="8dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/songTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cargando canción..."
-        android:layout_marginTop="12dp"
-        android:textStyle="italic"/>
 
-    <ImageButton
-        android:id="@+id/playPauseButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="24dp"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_media_play"/>
-</LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/radioLogo"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/ic_logo"
+                        android:contentDescription="Radio Logo"/>
+
+                    <TextView
+                        android:id="@+id/radioName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Radio Ejemplo"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:id="@+id/radioDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="La mejor música en vivo"
+                        android:layout_marginTop="8dp"/>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Frecuencia Actual"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/frequencyDisplay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="88.5 MHz"
+                                android:textSize="20sp"
+                                android:layout_marginTop="8dp"/>
+
+                            <com.google.android.material.slider.Slider
+                                android:id="@+id/frequencySlider"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:valueFrom="88.0"
+                                android:valueTo="108.0"
+                                android:stepSize="0.1"
+                                android:value="88.5"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/songTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cargando canción..."
+                        android:layout_marginTop="16dp"
+                        android:textStyle="italic"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/playPauseButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Reproducir"
+                        app:icon="@android:drawable/ic_media_play"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/shareButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Compartir"
+                            app:icon="@android:drawable/ic_menu_share"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/favoriteButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Favorito"
+                            app:icon="@android:drawable/btn_star"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_marginStart="8dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
